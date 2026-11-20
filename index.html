@@ -525,15 +525,15 @@ button.line:hover { background: var(--panel); }
 @media (max-width: 760px) { .fold canvas { height: 120px; } .fold-tag { position: static; display: inline-block; margin-top: 10px; transform: rotate(-2deg) translateY(8px); text-align: center; padding-left: 20px; } .fold-tag::after { display: none; } .fold.is-done .fold-tag { transform: rotate(-2deg); } .fold-tag br { display: none; } }
 
 /* footer: the quote beside one Chennai Central sticker, with a handwritten note, then a bottom bar */
-footer { position: relative; text-align: left; padding: 56px 24px 0; }
-.foot-main { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; padding-bottom: 36px; }
+footer { position: relative; text-align: left; padding: 40px 24px 0; }
+.foot-main { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 24px; padding-bottom: 24px; }
 .foot-text .sig { margin: 0; max-width: 15ch; font-size: clamp(30px, 5.4vw, 44px); line-height: 1.08; text-wrap: balance; }
 .foot-time { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font: 400 13px var(--mono); color: var(--muted); letter-spacing: .02em; }
 .ft-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74, 222, 128, .5); animation: ft-pulse 2.4s ease-out infinite; }
 @keyframes ft-pulse { 0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, .5); } 70%, 100% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); } }
 @media (prefers-reduced-motion: reduce) { .ft-dot { animation: none; } }
 .fs.is-now { transform: rotate(var(--r2)) translateY(-7px) scale(1.05); z-index: 3; }
-.foot-art { position: relative; padding-top: 44px; }
+.foot-art { position: relative; padding-top: 30px; }
 .foot-stickers { position: relative; width: 340px; height: 262px; }
 .fs { position: absolute; display: block; filter: drop-shadow(2.5px 0 0 var(--sticker-edge)) drop-shadow(-2.5px 0 0 var(--sticker-edge)) drop-shadow(0 2.5px 0 var(--sticker-edge)) drop-shadow(0 -2.5px 0 var(--sticker-edge)) drop-shadow(0 10px 14px rgba(0, 0, 0, .4)); transform: rotate(var(--r)); transition: transform .45s cubic-bezier(.2, 1.4, .4, 1); }
 .fs:hover { transform: rotate(var(--r2)) translateY(-7px) scale(1.05); z-index: 3; }
@@ -547,7 +547,7 @@ footer { position: relative; text-align: left; padding: 56px 24px 0; }
 .foot-bar { display: flex; align-items: center; justify-content: flex-start; gap: 12px; margin-inline: -24px; padding: 14px 24px 18px; border-top: 1px dashed var(--line); font: 400 12px var(--mono); color: var(--faint); }
 .foot-bar .pill svg { width: 13px; height: 13px; }
 @media (max-width: 640px) {
-  footer { padding: 44px 16px 0; }
+  footer { padding: 32px 16px 0; }
   .foot-main { grid-template-columns: 1fr; gap: 10px; }
   .foot-art { justify-self: end; margin-right: 6px; }
   .foot-stickers { width: 300px; height: 232px; } .fs-central { width: 104px; } .fs-crick { width: 120px; } .fs-dosa { width: 150px; left: 48px; } .fs-coffee { width: 68px; right: 8px; } .foot-note { right: auto; left: 0; top: -2px; } .fs-auto { top: 132px; width: 98px; } .fs-crick { left: 170px; top: 40px; width: 108px; }
