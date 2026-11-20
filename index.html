@@ -528,6 +528,11 @@ button.line:hover { background: var(--panel); }
 footer { position: relative; text-align: left; padding: 56px 24px 0; }
 .foot-main { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; padding-bottom: 36px; }
 .foot-text .sig { margin: 0; max-width: 15ch; font-size: clamp(30px, 5.4vw, 44px); line-height: 1.08; text-wrap: balance; }
+.foot-time { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font: 400 13px var(--mono); color: var(--muted); letter-spacing: .02em; }
+.ft-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74, 222, 128, .5); animation: ft-pulse 2.4s ease-out infinite; }
+@keyframes ft-pulse { 0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, .5); } 70%, 100% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); } }
+@media (prefers-reduced-motion: reduce) { .ft-dot { animation: none; } }
+.fs.is-now { transform: rotate(var(--r2)) translateY(-7px) scale(1.05); z-index: 3; }
 .foot-art { position: relative; padding-top: 44px; }
 .foot-stickers { position: relative; width: 340px; height: 262px; }
 .fs { position: absolute; display: block; filter: drop-shadow(2.5px 0 0 var(--sticker-edge)) drop-shadow(-2.5px 0 0 var(--sticker-edge)) drop-shadow(0 2.5px 0 var(--sticker-edge)) drop-shadow(0 -2.5px 0 var(--sticker-edge)) drop-shadow(0 10px 14px rgba(0, 0, 0, .4)); transform: rotate(var(--r)); transition: transform .45s cubic-bezier(.2, 1.4, .4, 1); }
@@ -798,7 +803,8 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
   <footer>
     <div class="foot-main">
       <div class="foot-text">
-        <p class="sig">Simple is the last thing a product becomes.</p>
+        <p class="foot-time" id="foot-time"><span class="ft-dot" aria-hidden="true"></span><span id="ft-clock">3:40 pm</span> in Chennai.</p>
+        <p class="sig" id="foot-doing">Probably writing PRDs.</p>
       </div>
       <div class="foot-art">
         <p class="foot-note" aria-hidden="true">made in Chennai<svg viewBox="0 0 54 34"><path d="M4 8C18 6 34 12 46 28M46 28l-9-2M46 28l1-9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -1632,6 +1638,34 @@ display:grid;grid-template-columns:minmax(0,350px) minmax(0,1fr);gap:22px;align-
   // one case summary open at a time within Work
   var work = $$("#work details");
   work.forEach(function (d) { d.addEventListener("toggle", function () { if (d.open) work.forEach(function (o) { if (o !== d) o.open = false; }); }); });
+
+  // footer: what Fatheen is probably doing right now in Chennai
+  (function () {
+    var clock = document.getElementById("ft-clock"), doing = document.getElementById("foot-doing");
+    if (!clock || !doing || !window.Intl) return;
+    var slots = [
+      { from: 6, to: 11, text: "Filter coffee first, roadmap second.", lift: [".fs-coffee"] },
+      { from: 11, to: 19, text: "Probably writing PRDs.", lift: [".fs-central"] },
+      { from: 19, to: 23, text: "Dosa, then CSK highlights.", lift: [".fs-dosa", ".fs-crick"] },
+      { from: 23, to: 30, text: "Asleep, or fixing one more thing.", lift: [] }
+    ];
+    function tick() {
+      var parts = {};
+      try {
+        new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Kolkata", hour: "numeric", minute: "2-digit", hour12: true }).formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+      } catch (e) { return; }
+      var h12 = parseInt(parts.hour, 10), pm = /p/i.test(parts.dayPeriod || "");
+      var h = (h12 % 12) + (pm ? 12 : 0);
+      clock.textContent = parts.hour + ":" + parts.minute + " " + (pm ? "pm" : "am");
+      var hh = h < 6 ? h + 24 : h, slot = slots[3];
+      slots.forEach(function (s) { if (hh >= s.from && hh < s.to) slot = s; });
+      doing.textContent = slot.text;
+      document.querySelectorAll(".fs.is-now").forEach(function (el) { el.classList.remove("is-now"); });
+      slot.lift.forEach(function (q) { var el = document.querySelector(q); if (el) el.classList.add("is-now"); });
+    }
+    tick();
+    setInterval(tick, 30000);
+  })();
 })();
 </script>
 
