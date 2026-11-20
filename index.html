@@ -600,6 +600,28 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
 .tk[open] .tk-icons { opacity: .35; }
 @media (max-width: 640px) { .tk .row-end .dates { display: none; } .tk .tk-icons { gap: 6px; } }
 
+/* footer v3: line on top, stickers in one row below it */
+.foot-main { grid-template-columns: 1fr; gap: 6px; padding-bottom: 28px; }
+.foot-art { justify-self: start; padding-top: 0; }
+.foot-stickers { display: flex; align-items: flex-end; width: auto; height: auto; padding: 12px 0 0 4px; }
+.foot-stickers .fs { position: relative; inset: auto; flex: none; margin-right: -14px; }
+.fs-central { order: 1; width: 104px; }
+.fs-dosa { order: 2; width: 150px; }
+.fs-crick { order: 3; width: 112px; }
+.fs-coffee { order: 4; width: 70px; margin-bottom: 2px; }
+.foot-note { top: auto; bottom: 34px; left: calc(100% + 10px); right: auto; transform: rotate(-4deg); }
+.foot-note svg { transform: scaleX(-1) rotate(30deg); margin: 4px auto 0 0; }
+@media (max-width: 640px) {
+  .foot-main { gap: 4px; }
+  .foot-art { justify-self: start; margin-right: 0; }
+  .foot-stickers { width: auto; height: auto; }
+  .foot-stickers .fs { margin-right: -12px; }
+  .fs-central { width: 82px; } .fs-dosa { width: 116px; left: auto; } .fs-crick { width: 86px; left: auto; top: auto; } .fs-coffee { width: 56px; right: auto; }
+  .foot-main { padding-bottom: 40px; }
+  .foot-note { left: auto; right: 4px; top: auto; bottom: -30px; font-size: 19px; transform: rotate(-3deg); }
+  .foot-note svg { display: none; }
+}
+
 </style>
 
 <nav class="rail" aria-label="Sections" id="rail"></nav>
