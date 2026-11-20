@@ -634,6 +634,23 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
   .foot-note svg { display: none; }
 }
 
+/* footer v5: livelier "made in Chennai" note, bigger jersey */
+.foot-note { display: flex; align-items: flex-start; gap: 4px; color: var(--text); opacity: .82; }
+.foot-note svg { display: block; flex: none; transform: none; margin: 10px 0 0; width: 42px; height: 28px; color: var(--muted); }
+@media (min-width: 641px) {
+  .fs-crick { width: 94px; }
+  .foot-art { margin-top: 40px; }
+  .foot-note { font-size: 23px; top: -46px; left: 34px; right: auto; transform: rotate(-5deg); }
+  .foot-note svg { display: block; }
+}
+@media (max-width: 640px) {
+  .fs-crick { width: 100px; }
+  .foot-note { font-size: 20px; }
+  .foot-note svg { display: block; width: 34px; height: 22px; margin-top: -14px; transform: scaleY(-1); }
+}
+/* the sticker already lifted for the current time still reacts on hover */
+.fs.is-now:hover { transform: rotate(0deg) translateY(-12px) scale(1.1); z-index: 4; }
+
 </style>
 
 <nav class="rail" aria-label="Sections" id="rail"></nav>
