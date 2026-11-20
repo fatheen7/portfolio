@@ -622,6 +622,18 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
   .foot-note svg { display: none; }
 }
 
+/* footer v4 (desktop): smaller sticker row beside the line, bottoms aligned */
+@media (min-width: 641px) {
+  .foot-main { grid-template-columns: auto auto; justify-content: start; align-items: end; column-gap: 56px; }
+  .foot-art { padding-top: 0; margin-bottom: 4px; }
+  .foot-stickers { padding: 0; }
+  .foot-stickers .fs { margin-right: -10px; }
+  .fs-central { width: 72px; } .fs-dosa { width: 104px; } .fs-crick { width: 78px; } .fs-coffee { width: 50px; }
+  .foot-art { margin-top: 34px; }
+  .foot-note { font-size: 19px; top: -36px; bottom: auto; left: auto; right: -6px; transform: rotate(-4deg); }
+  .foot-note svg { display: none; }
+}
+
 </style>
 
 <nav class="rail" aria-label="Sections" id="rail"></nav>
