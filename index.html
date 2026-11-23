@@ -515,7 +515,7 @@ button.line:hover { background: var(--panel); }
 .press-done[hidden] { display: none; }
 .press-done { position: absolute; inset: 0; pointer-events: none; }
 .press-done > * { pointer-events: auto; position: absolute; }
-.press-why { top: 0; font: 500 22px/1 var(--hand); color: var(--accent); white-space: nowrap; transform: rotate(-4deg); transform-origin: 0 100%; animation: fadein .6s .25s ease-out backwards; transition: color .2s; }
+.press-why { top: 0; font: 500 22px/1 var(--hand); color: var(--accent); white-space: nowrap; transform: rotate(-4deg); transform-origin: 0 100%; animation: whypop .32s cubic-bezier(.2, 1.5, .4, 1) backwards; transition: color .2s; }
 .press-why svg { display: inline-block; width: 44px; height: 20px; margin-left: 4px; vertical-align: -4px; transition: transform .25s; }
 .press-again { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; color: var(--faint); animation: fadein .6s .5s ease-out backwards; transition: color .2s, transform .4s; }
 .press-again:hover { color: var(--fg); transform: rotate(-180deg); }
@@ -683,6 +683,10 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
 }
 
 #recognition .line-d { font: 400 14px/1.55 var(--sans); color: var(--muted); max-width: 62ch; }
+
+/* "simple, at last." pops the moment the thread is flat */
+@keyframes whypop { from { opacity: 0; transform: rotate(-4deg) scale(.7); } to { opacity: 1; transform: rotate(-4deg) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .press-why { animation: none; } }
 
 </style>
 
@@ -3424,7 +3428,7 @@ display:grid;grid-template-columns:minmax(0,350px) minmax(0,1fr);gap:22px;align-
         d += (i ? "L" : "M") + (W * t + r * Math.sin(th)).toFixed(1) + "," + (MID + r * Math.cos(th) * 0.9 + drift).toFixed(1);
       }
       path.setAttribute("d", d);
-      var nowFlat = sum / N < 0.035;
+      var nowFlat = sum / N < 0.05;
       if (nowFlat !== flat) { flat = nowFlat; flatTime = performance.now(); box.classList.toggle("is-flat", flat); done.hidden = !flat; if (flat) place(); }
       raf = moving ? requestAnimationFrame(draw) : 0;
     }
