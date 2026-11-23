@@ -668,6 +668,20 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
 .cred:hover { text-decoration-color: currentColor; }
 .cred .arr { width: 11px; height: 11px; vertical-align: -1px; }
 
+/* Recognition and Credentials: one calm, stacked layout (title, then details), more breathing room */
+#recognition .line, #credentials .line { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 5px; padding: 18px 24px; }
+#recognition .line-t, #credentials .line-t { font-size: 15.5px; line-height: 1.35; }
+#recognition .line-s, #credentials .line-s { font: 400 12.5px/1.6 var(--mono); color: var(--muted); }
+#credentials .line.col .tagm { order: 2; font: 400 12.5px/1.6 var(--mono); color: var(--muted); }
+#credentials .line.col .line-s { order: 3; font: 400 14px/1.55 var(--sans); color: var(--muted); max-width: 62ch; }
+#credentials .sub { padding-top: 20px; padding-bottom: 2px; }
+#credentials .edu { padding: 20px 24px; align-items: center; }
+#credentials .edu span { margin-top: 4px; line-height: 1.5; }
+@media (max-width: 640px) {
+  #recognition .line, #credentials .line, #credentials .edu { padding: 16px; }
+  #credentials .edu em { font-size: 22px; }
+}
+
 </style>
 
 <nav class="rail" aria-label="Sections" id="rail"></nav>
@@ -835,7 +849,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
     </section>
   <section id="recognition" data-rail="Recognition">
     <div class="band"><h2>Recognition</h2></div>
-    <ul><li class="line"><span class="line-t">Second Runner-Up, IEEE YESIST12</span><span class="line-s">Wrinkl · Kuala Lumpur, Malaysia · 2025</span></li><li class="line"><span class="line-t">Finalist, BITS Pilani Hyderabad Hackathon</span><span class="line-s">BITS Pilani, Hyderabad · 2025</span></li><li class="line"><span class="line-t">Luminary Award</span><span class="line-s">Sathyabama Institute of Science and Technology · 2025</span></li><li class="line"><span class="line-t">International Project Pitching Event</span><span class="line-s">Universiti Sains Islam Malaysia</span></li></ul>
+    <ul><li class="line"><span class="line-t">Second Runner-Up, IEEE YESIST12</span><span class="line-s">Wrinkl · Kuala Lumpur, Malaysia · 2025</span></li><li class="line"><span class="line-t">Finalist, BITS Pilani Hyderabad Hackathon</span><span class="line-s">BITS Pilani, Hyderabad · 2025</span></li><li class="line"><span class="line-t">Luminary Award</span><span class="line-s">Sathyabama Institute of Science and Technology · 2025</span></li><li class="line"><span class="line-t">Third Best Project, Final-Year Project Event</span><span class="line-s">Smart Blind Stick · Sathyabama Institute of Science and Technology</span></li><li class="line"><span class="line-t">Selected Presenter, International Project Pitching Event</span><span class="line-s">Universiti Sains Islam Malaysia · Kuala Lumpur</span></li></ul>
   </section>
 
   <section id="credentials" data-rail="Credentials">
