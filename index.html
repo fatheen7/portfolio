@@ -1726,7 +1726,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
      },
      {
       "type": "p",
-      "text": "Delivery systems already treat them separately. Logistics APIs such as Shadowfax and DoorDash Drive send one update when the rider **arrives** and another when the order is **delivered**. Research on food delivery calls the time between them service time: finding the entrance, getting past security and reaching the door. Unclear addresses and large complexes make it longer."
+      "text": "Delivery systems already treat them separately. DoorDash Drive's developer API, for example, sends one update when the rider **arrives** at the drop-off and another when the order is **dropped off**. Transport research calls the time spent at the stop service time: finding the entrance, getting past security and reaching the door. Unclear addresses and large complexes are likely to make it longer."
      },
      {
       "type": "p",
@@ -1815,7 +1815,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
         "who": "Delivery app",
         "when": "an order goes to a complex,",
         "want": "to pass the rider the right entrance,",
-        "so": "each drop-off takes less time."
+        "so": "make each drop-off take less time."
        }
       ]
      },
@@ -1825,7 +1825,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
      },
      {
       "type": "table",
-      "caption": "From public information",
+      "caption": "From public reports and developer documentation",
       "head": [
        "Product",
        "What it solves",
@@ -1833,7 +1833,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
       ],
       "rows": [
        [
-        "Entrance icons in Google Maps (in testing since 2024)",
+        "Entrance icons in Google Maps (reported in testing since March 2024)",
         "Shows where a building's entrances are",
         "Not which one to use for this delivery"
        ],
@@ -1848,7 +1848,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
         "One point, usually on the building, with no note"
        ],
        [
-        "Swiggy's in-house mapping",
+        "Swiggy's in-house location intelligence team",
         "Better addresses for Swiggy's own orders",
         "Works only inside one app"
        ],
@@ -2025,7 +2025,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
         "First"
        ],
        [
-        "Delivery-as-a-service providers (Shadowfax, Uber Direct)",
+        "Delivery-as-a-service providers (for example, Shadowfax, and Uber Direct in Bengaluru)",
         "They deliver for many brands, so a shared entrance helps every client",
         "First"
        ],
@@ -2038,7 +2038,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
      },
      {
       "type": "p",
-      "text": "The commercial model already exists. Address Descriptors are billed per request on the Maps Platform, and the delivery entrance would be priced the same way: a small cost per order against minutes saved at every drop-off."
+      "text": "Address Descriptors come at no extra cost within Geocoding in India, a sign Google uses better address data to win Platform customers. The delivery entrance could follow the same model, bundled to drive adoption, or become a premium field once it proves its value."
      }
     ]
    },
@@ -2153,7 +2153,7 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
        {
         "horizon": "Next",
         "title": "Open it on the Maps Platform",
-        "text": "Any delivery or ride app can read the confirmed entrance, priced per request.",
+        "text": "Any delivery or ride app can read the confirmed entrance through the Maps Platform.",
         "gate": "Partner apps show the entrance to their riders."
        },
        {
