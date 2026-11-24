@@ -240,7 +240,9 @@ h2.serif { font: italic 400 27px/1.1 var(--serif); letter-spacing: 0; }
 .line-s { font: 400 12.5px var(--mono); color: var(--muted); }
 .line.col { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
 .line.col .line-s { grid-column: 1; font: 400 14px/1.5 var(--sans); }
-.tagm { grid-column: 2; grid-row: 1; font: 400 12px var(--mono); color: var(--faint); }
+.tagm { grid-column: 2; grid-row: 1; font: 400 12px var(--mono); color: var(--faint); white-space: nowrap; }
+.tagm .arr { width: 12px; height: 12px; margin-left: 3px; vertical-align: -1px; transition: transform .2s, color .2s; }
+button.line:hover .tagm .arr { color: var(--fg); transform: translate(2px, -2px); }
 .edu { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; padding: 16px 24px; border-bottom: 1px solid var(--line); }
 .edu b { font-weight: 600; }
 .edu span { display: block; font-size: 14px; color: var(--muted); }
