@@ -704,8 +704,8 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
     </div>
     <div class="nav-tools">
       <button class="pill mark" id="theme" type="button" aria-label="Switch between light and dark"><svg class="i-moon" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 9.500A5.500 5.500 0 0 1 6.500 3 5.500 5.500 0 1 0 13 9.500z" fill="currentColor"/></svg><svg class="i-sun" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="currentColor"/><path d="M8 1.500v1.800M8 12.700v1.800M1.500 8h1.800M12.700 8h1.800M3.400 3.400l1.300 1.300M11.300 11.300l1.300 1.300M3.400 12.600l1.300-1.300M11.300 4.700l1.300-1.300" stroke="currentColor" stroke-width="1.400" stroke-linecap="round"/></svg></button>
-      <button class="pill cta" id="resume-top" aria-label="Download resume"><span class="r-label">Resume</span>
-        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v8M4.8 7.6 8 10.8l3.2-3.2M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <button class="pill cta" id="resume-top" aria-label="Open resume (PDF, opens in a new tab)"><span class="r-label">Resume</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
   </header>
@@ -827,10 +827,10 @@ details.has-back > .back-practice { right: calc(100% + 38px); top: 4px; }
         <span><b>LinkedIn</b><span class="h">in/fatheen7</span></span>
         <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.400" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <button class="cell" id="resume-bottom" type="button">
+      <button class="cell" id="resume-bottom" type="button" aria-label="Open resume (PDF, opens in a new tab)">
         <span class="ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h5.500L12 4.500V14H4zM9 2v3h3M6 8h4M6 10.500h4" fill="none" stroke="currentColor" stroke-width="1.300" stroke-linejoin="round" stroke-linecap="round"/></svg></span>
         <span><b>Resume</b><span class="h">One page · PDF</span></span>
-        <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.500v8M4.800 7.600 8 10.800l3.200-3.200M3 13.500h10" fill="none" stroke="currentColor" stroke-width="1.400" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.400" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="cell">
         <span class="ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14s4.500-4 4.500-7.500a4.500 4.500 0 0 0-9 0C3.500 10 8 14 8 14z" fill="none" stroke="currentColor" stroke-width="1.300" stroke-linejoin="round"/><circle cx="8" cy="6.500" r="1.600" fill="currentColor"/></svg></span>
@@ -3512,9 +3512,10 @@ display:grid;grid-template-columns:minmax(0,350px) minmax(0,1fr);gap:22px;align-
   if (window.claude && window.claude.use) window.claude.use("downloads").then(function (d) { dl = d; });
   function saveResume() {
     if (!dl) {
-      // on the public site: a normal file download
-      var a = document.createElement("a"); a.href = "resume.pdf"; a.download = "Muhammad_Fatheen_Resume.pdf";
-      document.body.appendChild(a); a.click(); a.remove(); return;
+      // on the public site: open the PDF in a new tab; the browser's viewer offers download and print
+      var w = window.open("resume.pdf", "_blank", "noopener");
+      if (!w) location.href = "resume.pdf";
+      return;
     }
     fetch("resume.pdf").then(function (r) { if (!r.ok) throw 0; return r.blob(); })
       .then(function (blob) { return dl.save({ filename: "Muhammad_Fatheen_Resume.pdf", data: blob }); })
